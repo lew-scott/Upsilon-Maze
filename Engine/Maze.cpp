@@ -271,12 +271,12 @@ void Maze::drawMaze(Graphics & gfx)
 	}
 }
 
-Triangle& Maze::atTriangle(const Vei2 position)
+Tile& Maze::atTriangle(const Vei2 position)
 {
 	return points[position.y * width + position.x];
 }
 
-const Triangle & Maze::atTriangle(const Vei2 & position) const
+const Tile & Maze::atTriangle(const Vei2 & position) const
 {
 	return points[position.y * width + position.x];
 }

@@ -150,7 +150,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundEffect.h" />
-    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vei2.h" />
   </ItemGroup>
@@ -165,7 +165,7 @@
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Vei2.cpp" />
   </ItemGroup>

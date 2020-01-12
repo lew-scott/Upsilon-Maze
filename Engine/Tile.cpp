@@ -1,28 +1,28 @@
-#include "Triangle.h"
+#include "Tile.h"
 
 
-Triangle::State Triangle::setToUnvisited()
+Tile::State Tile::setToUnvisited()
 {
 	return state = State::UnVisited;
 }
 
-Triangle::State Triangle::setToVisited()
+Tile::State Tile::setToVisited()
 {
 	return state = State::Visited;
 }
 
-Triangle::State Triangle::setToStart()
+Tile::State Tile::setToStart()
 {
 	setBottomConnection();
 	return state = State::Start;
 }
 
-void Triangle::setToEnd()
+void Tile::setToEnd()
 {
 	setBottomConnection();
 }
 
-void Triangle::drawTriangle(Graphics & gfx, Vei2 pos)
+void Tile::drawTriangle(Graphics & gfx, Vei2 pos)
 {
 	Vec2 scrPos;
 	scrPos.x = (float)pos.x * width * 0.5f + 130.0f;
@@ -50,48 +50,48 @@ void Triangle::drawTriangle(Graphics & gfx, Vei2 pos)
 	}
 }
 
-void Triangle::setLeftConnection()
+void Tile::setLeftConnection()
 {
 	 hasLeftConnection = true;
 }
 
-void Triangle::setRightConnection()
+void Tile::setRightConnection()
 {
 	hasRightConnection = true;
 }
 
-void Triangle::setBottomConnection()
+void Tile::setBottomConnection()
 {
 	hasBottomConnection = true;
 }
 
-void Triangle::setTopConnection()
+void Tile::setTopConnection()
 {
 	hasTopConnection = true;
 }
 
-bool Triangle::checkLeftConnection()
+bool Tile::checkLeftConnection()
 {
 	return hasLeftConnection;
 }
 
-bool Triangle::checkRightConnection()
+bool Tile::checkRightConnection()
 {
 	return hasRightConnection;
 }
 
-bool Triangle::checkBottomConnection()
+bool Tile::checkBottomConnection()
 {
 	return hasBottomConnection;
 }
 
-bool Triangle::checkTopConnection()
+bool Tile::checkTopConnection()
 {
 	return hasTopConnection;
 }
 
 
-bool Triangle::checkUnvisited()
+bool Tile::checkUnvisited()
 {
 	if (state == State::UnVisited)
 	{ 

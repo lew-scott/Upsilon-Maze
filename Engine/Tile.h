@@ -4,7 +4,7 @@
 
 
 
-class Triangle
+class Tile
 {
 public:
 
