@@ -249,27 +249,6 @@ bool Maze::check_tri_are_all_visited()
 	return true;
 }
 
-void Maze::drawMaze(Graphics & gfx)
-{
-	Vei2 p = { 0,0 };
-	for (Vei2 gridpos = { 0,0 }; gridpos.y < height; gridpos.y++)
-	{
-		for (gridpos.x = 0; gridpos.x < width; gridpos.x+=1)
-		{
-			p.x = gridpos.x;
-			p.y = gridpos.y;
-
-			if (gridpos.x % 2 == 0 && gridpos.y % 2 == 0)
-			{
-				atTriangle(gridpos).drawTiles(gfx, p);
-			}
-			else if(gridpos.x % 2 == 1 && gridpos.y % 2 == 1)
-			{
-				atTriangle(gridpos).drawTiles(gfx, gridpos);
-			}
-		}
-	}
-}
 
 Tile& Maze::atTriangle(const Vei2 position)
 {

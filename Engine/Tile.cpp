@@ -22,20 +22,6 @@ void Tile::setToEnd()
 	setBottomConnection();
 }
 
-void Tile::drawTiles(Graphics & gfx, Vei2 pos)
-{
-	Vec2 scrPos = {100,100};
-
-	Vec2 p1 = { -2 + scrPos.x,-4 + scrPos.y };
-	Vec2 p2 = { -4 + scrPos.x, -2 + scrPos.y };
-	Vec2 p3 = { -4 + scrPos.x, 2 + scrPos.y };
-	Vec2 p4 = { -2 + scrPos.x, 2 + scrPos.y };
-	Vec2 p5 = {  2 + scrPos.x, 2 + scrPos.y };
-	Vec2 p6 = {  4 + scrPos.x, 2 + scrPos.y };
-	Vec2 p7 = { -4 + scrPos.x, -4 + scrPos.y };
-	Vec2 p8 = {  2 + scrPos.x, -4 + scrPos.y };
-
-}
 
 void Tile::drawTile(Graphics & gfx, Vec2 scrPos)
 {
@@ -48,14 +34,39 @@ void Tile::drawTile(Graphics & gfx, Vec2 scrPos)
 	Vec2 p7 = { -12 + scrPos.x, 6 + scrPos.y };
 	Vec2 p8 = { -12 + scrPos.x, -6 + scrPos.y };
 
-	gfx.Drawline(p1, p2, Colors::White);
-	gfx.Drawline(p2, p3, Colors::White);
-	gfx.Drawline(p3, p4, Colors::White);
-	gfx.Drawline(p4, p5, Colors::White);
-	gfx.Drawline(p5, p6, Colors::White);
-	gfx.Drawline(p6, p7, Colors::White);
-	gfx.Drawline(p7, p8, Colors::White);
-	gfx.Drawline(p8, p1, Colors::White);
+	if (hasTopConnection == false)
+	{
+		gfx.Drawline(p1, p2, Colors::White);
+	}
+	if (hasTopRightConnection == false)
+	{
+		gfx.Drawline(p2, p3, Colors::White);
+	}
+	if (hasRightConnection == false)
+	{
+		gfx.Drawline(p3, p4, Colors::White);
+	}
+	if (hasBottomRightConnection == false)
+	{
+		gfx.Drawline(p4, p5, Colors::White);
+	}
+	if (hasBottomConnection == false)
+	{
+		gfx.Drawline(p5, p6, Colors::White);
+	}
+	if (hasBottomLeftConnection == false)
+	{
+		gfx.Drawline(p6, p7, Colors::White);
+	}
+	if (hasLeftConnection == false)
+	{
+		gfx.Drawline(p7, p8, Colors::White);
+	}
+	if (hasTopLeftConnection == false)
+	{
+		gfx.Drawline(p8, p1, Colors::White);
+	}
+
 }
 
 void Tile::draw(Graphics & gfx)
@@ -119,9 +130,29 @@ void Tile::setLeftConnection()
 	 hasLeftConnection = true;
 }
 
+void Tile::setTopLeftConnection()
+{
+	hasTopLeftConnection = true;
+}
+
+void Tile::setBottomLeftConnection()
+{
+	hasBottomLeftConnection = true;
+}
+
 void Tile::setRightConnection()
 {
 	hasRightConnection = true;
+}
+
+void Tile::setTopRightConnection()
+{
+	hasTopRightConnection = true;
+}
+
+void Tile::setBottomRightConnection()
+{
+	hasBottomRightConnection = true;
 }
 
 void Tile::setBottomConnection()
@@ -139,9 +170,29 @@ bool Tile::checkLeftConnection()
 	return hasLeftConnection;
 }
 
+bool Tile::checkTopLeftConnection()
+{
+	return hasTopLeftConnection;
+}
+
+bool Tile::checkBottomLeftConnection()
+{
+	return hasTopRightConnection;
+}
+
 bool Tile::checkRightConnection()
 {
 	return hasRightConnection;
+}
+
+bool Tile::checkTopRightConnection()
+{
+	return hasBottomLeftConnection;
+}
+
+bool Tile::checkBottomRightConnection()
+{
+	return hasBottomRightConnection;
 }
 
 bool Tile::checkBottomConnection()

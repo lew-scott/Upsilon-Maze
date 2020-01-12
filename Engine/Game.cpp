@@ -44,6 +44,5 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	//M.drawMaze(gfx);
 	T.draw(gfx);
 }
