@@ -21,7 +21,10 @@ public:
 	State setToVisited();
 	State setToStart();
 	void setToEnd();
-	void drawTriangle(Graphics& gfx, Vei2 position);
+	void drawTiles(Graphics& gfx, Vei2 position);
+	void drawTile(Graphics & gfx, Vec2 position);
+	void draw(Graphics& gfx);
+	void drawBorder(Graphics& gfx, Vec2 scrPos);
 	void setLeftConnection();
 	void setRightConnection();
 	void setBottomConnection();

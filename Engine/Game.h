@@ -24,6 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Maze.h"
+#include "Tile.h"
 
 class Game
 {
@@ -45,4 +46,5 @@ private:
 	/*  User Variables              */
 	/********************************/
 	Maze M;
+	Tile T;
 };

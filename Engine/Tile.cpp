@@ -22,31 +22,95 @@ void Tile::setToEnd()
 	setBottomConnection();
 }
 
-void Tile::drawTriangle(Graphics & gfx, Vei2 pos)
+void Tile::drawTiles(Graphics & gfx, Vei2 pos)
 {
-	Vec2 scrPos;
-	scrPos.x = (float)pos.x * width * 0.5f + 130.0f;
-	scrPos.y = (float)pos.y * height + 30.0f;
+	Vec2 scrPos = {100,100};
 
-	Vec2 p1 = { 0 + scrPos.x,-8 + scrPos.y };
-	Vec2 p2 = { -6 + scrPos.x, 4 + scrPos.y };
-	Vec2 p3 = { 6 + scrPos.x, 4 + scrPos.y };
-	if (state == State::Visited || state == State::Start || state == State::End)
+	Vec2 p1 = { -2 + scrPos.x,-4 + scrPos.y };
+	Vec2 p2 = { -4 + scrPos.x, -2 + scrPos.y };
+	Vec2 p3 = { -4 + scrPos.x, 2 + scrPos.y };
+	Vec2 p4 = { -2 + scrPos.x, 2 + scrPos.y };
+	Vec2 p5 = {  2 + scrPos.x, 2 + scrPos.y };
+	Vec2 p6 = {  4 + scrPos.x, 2 + scrPos.y };
+	Vec2 p7 = { -4 + scrPos.x, -4 + scrPos.y };
+	Vec2 p8 = {  2 + scrPos.x, -4 + scrPos.y };
+
+}
+
+void Tile::drawTile(Graphics & gfx, Vec2 scrPos)
+{
+	Vec2 p1 = { -6 + scrPos.x,-12 + scrPos.y };
+	Vec2 p2 = { 6 + scrPos.x, -12 + scrPos.y };
+	Vec2 p3 = { 12 + scrPos.x, -6 + scrPos.y };
+	Vec2 p4 = { 12 + scrPos.x, 6 + scrPos.y };
+	Vec2 p5 = { 6 + scrPos.x, 12 + scrPos.y };
+	Vec2 p6 = { -6 + scrPos.x, 12 + scrPos.y };
+	Vec2 p7 = { -12 + scrPos.x, 6 + scrPos.y };
+	Vec2 p8 = { -12 + scrPos.x, -6 + scrPos.y };
+
+	gfx.Drawline(p1, p2, Colors::White);
+	gfx.Drawline(p2, p3, Colors::White);
+	gfx.Drawline(p3, p4, Colors::White);
+	gfx.Drawline(p4, p5, Colors::White);
+	gfx.Drawline(p5, p6, Colors::White);
+	gfx.Drawline(p6, p7, Colors::White);
+	gfx.Drawline(p7, p8, Colors::White);
+	gfx.Drawline(p8, p1, Colors::White);
+}
+
+void Tile::draw(Graphics & gfx)
+{
+	float x = 70.0f; 
+	float y = 60.0f;
+	Vec2 scrPos = { x,y };
+
+	drawBorder(gfx, scrPos);
+
+	int length = 19;
+	for (int j = 1; j < 26; j++)
 	{
-		if (hasLeftConnection == false)
+		for (int i = 0; i < length; i++)
 		{
-			gfx.Drawline(p1, p2, Colors::White);
+			drawTile(gfx, scrPos);
+			scrPos.x += 36;
 		}
 
-		if (hasBottomConnection == false)
+		if (j % 2 == 1)
 		{
-			gfx.Drawline(p2, p3, Colors::White);
+			scrPos.x = x + 18;
+			length -= 1;
+		}
+		else
+		{
+			scrPos.x = x;
+			length += 1;
 		}
 
-		if (hasRightConnection == false)
-		{
-			gfx.Drawline(p3, p1, Colors::White);
-		}
+		scrPos.y += 19;
+	}
+}
+
+void Tile::drawBorder(Graphics & gfx, Vec2 scrPos)
+{
+	Vec2 p1 = { scrPos.x + 12.0f, scrPos.y - 6.0f };
+	Vec2 p2 = { scrPos.x + 12.0f, scrPos.y + 6.0f + 24.0f * 19.0f };
+	Vec2 p3 = { scrPos.x - 6.0f, scrPos.y + 13.0f };
+	Vec2 p4 = { scrPos.x + 6.0f + 24.0f * 27, scrPos.y + 13.0f };
+
+	for (int i = 0; i < 18; i++)
+	{
+		gfx.Drawline(p1, { p1.x + 12, p1.y }, Colors::White);
+		gfx.Drawline(p2, { p2.x + 12, p2.y }, Colors::White);
+		p1.x += 36.0f;
+		p2.x += 36.0f;
+	}
+
+	for (int i = 0; i < 12; i++)
+	{
+		gfx.Drawline(p3, { p3.x, p3.y + 13 }, Colors::White);
+		gfx.Drawline(p4, { p4.x, p4.y + 13 }, Colors::White);
+		p3.y += 38.0f;
+		p4.y += 38.0f;
 	}
 }
 

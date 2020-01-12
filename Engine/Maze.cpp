@@ -261,11 +261,11 @@ void Maze::drawMaze(Graphics & gfx)
 
 			if (gridpos.x % 2 == 0 && gridpos.y % 2 == 0)
 			{
-				atTriangle(gridpos).drawTriangle(gfx, p);
+				atTriangle(gridpos).drawTiles(gfx, p);
 			}
 			else if(gridpos.x % 2 == 1 && gridpos.y % 2 == 1)
 			{
-				atTriangle(gridpos).drawTriangle(gfx, gridpos);
+				atTriangle(gridpos).drawTiles(gfx, gridpos);
 			}
 		}
 	}
